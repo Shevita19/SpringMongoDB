@@ -1,24 +1,31 @@
-package com.mongo.testMongo.entity;
+package com.mongo.testMongo.model;
 
-import jdk.jfr.DataAmount;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-
+@Document
 public class Employee {
-
+@Id
     private String id;
     private String firstName;
     private String lastName;
-    private String address;
+    private Address address;
+    private Float salary;
 
-    public String getId() {
-        return id;
+    public Employee(){
+        super();
     }
 
-    public Employee(String id, String firstName, String lastName, String address) {
-        this.id = id;
+    public Employee(String firstName,  String lastName, Address address, Float salary) {
+       super();
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
+        this.salary= salary;
+    }
+
+    public String getId() {
+        return id;
     }
 
     public void setId(String id) {
@@ -41,11 +48,19 @@ public class Employee {
         this.lastName = lastName;
     }
 
-    public String getAddress() {
+    public Address getAddress() {
         return address;
     }
 
-    public void setAddress(String address) {
+    public void setAddress(Address address) {
         this.address = address;
+    }
+
+    public Float getSalary() {
+        return salary;
+    }
+
+    public void setSalary(Float salary) {
+        this.salary = salary;
     }
 }
