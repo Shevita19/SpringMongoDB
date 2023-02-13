@@ -1,2 +1,2 @@
 # SpringMongoDB
-Spring boot project using MongoDB
+Spring boot project using MongoDB custom queries
