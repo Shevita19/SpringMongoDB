@@ -1,15 +1,13 @@
 package com.mongo.testMongo.repository;
 
-import com.mongodb.MongoClient;
-import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoDatabase;
+
 import com.mongo.testMongo.model.Employee;
-import org.bson.Document;
+import com.mongo.testMongo.model.EmployeeType;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 @Repository
@@ -23,6 +21,11 @@ public interface EmployeeRepository extends MongoRepository<Employee, String> {
 
     @Query(value="{'salary': {$gte:?0}}")
     List<Employee> findBySalaryGreaterThan(float salary);
+
+    List<Employee> findAllByEmployeeType(EmployeeType employeeType);
+
+
+    List<Employee> findAllByEmployeeTypeIn(List<EmployeeType> employeeTypeList);
 }
 //    @Query(value="{'salary': {$gte:?0}}, fields= "{'firstName':1, 'id':0}")
 //    List<Employee> findBySalaryGreaterThan(float salary);

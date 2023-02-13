@@ -2,11 +2,12 @@ package com.mongo.testMongo;
 
 import com.mongo.testMongo.model.Address;
 import com.mongo.testMongo.model.Employee;
+import com.mongo.testMongo.model.EmployeeType;
 import com.mongo.testMongo.repository.EmployeeRepository;
-import com.mongodb.MongoClient;
-import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoDatabase;
-import org.bson.Document;
+//import com.mongodb.MongoClient;
+//import com.mongodb.client.MongoCollection;
+//import com.mongodb.client.MongoDatabase;
+//import org.bson.Document;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -51,17 +52,17 @@ public class TestmongoApplication implements CommandLineRunner {
 
 
 		List<Employee> listOfEmployees = new ArrayList<Employee>();
-		Employee e1 = new Employee("EM1", "CD1", new Address("abc", "def", "Gurgaon", "NCR", 1234), 4000);
+		Employee e1 = new Employee("EM1", "CD1", new Address("abc", "def", "Gurgaon", "NCR", 1234), 4000f, EmployeeType.Intern);
 
-		Employee e2 = new Employee("EM2", "CD2", new Address("ghi", "jkl", "Delhi", "NCR", 444), 8000);
+		Employee e2 = new Employee("EM2", "CD2", new Address("ghi", "jkl", "Delhi", "NCR", 444), 8000f, EmployeeType.Contract);
 
-		Employee e3 = new Employee("EM3", "CD3", new Address("mno", "pqr", "Dwarka", "NCR", 333), 13000);
+		Employee e3 = new Employee("EM3", "CD3", new Address("mno", "pqr", "Dwarka", "NCR", 333), 13000f, EmployeeType.Permanent);
 
-		Employee e4 = new Employee("EM4", "CD4", new Address("stu", "vwx", "Noida", "NCR", 222), 5000);
+		Employee e4 = new Employee("EM4", "CD4", new Address("stu", "vwx", "Noida", "NCR", 222), 5000f, EmployeeType.Contract);
 
-		Employee e5 = new Employee("EM5", "CD5", new Address("yza", "bcd", "New Delhi", "NCR", 785), 9000);
+		Employee e5 = new Employee("EM5", "CD5", new Address("yza", "bcd", "New Delhi", "NCR", 785), 9000f, EmployeeType.Intern);
 
-		Employee e6 = new Employee("EM6", "CD6", new Address("efs", "ghj", "Faridabad", "NCR", 387), 8000);
+		Employee e6 = new Employee("EM6", "CD6", new Address("efs", "ghj", "Faridabad", "NCR", 387), 8000f, EmployeeType.Permanent);
 
 
 		listOfEmployees.add(e1);

@@ -1,6 +1,7 @@
 package com.mongo.testMongo.controller;
 
 import com.mongo.testMongo.model.Employee;
+import com.mongo.testMongo.model.EmployeeType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.mongo.testMongo.service.EmployeeService;
@@ -49,6 +50,7 @@ public class EmployeeController {
     @GetMapping("/example")
     public List<Employee> getAllByExample(@RequestBody Employee emp){
 
+        //
         return employeeService.getAllByExample(emp);
     }
 
@@ -58,11 +60,26 @@ public class EmployeeController {
         return employeeService.getAllByFirstNameStartingWith(firstName);
     }
 
-    @GetMapping("/zipCode")
-    public List<Employee> getAllByAddressZipCode(@RequestParam(name= "zipcode") int zipCode){
 
-        return employeeService.getAllByAddressZipCode(zipCode);
+
+    @GetMapping("/zipCode")
+    public List<Employee> getAllByAddressZipCode(@RequestParam(name= "zipCode") int zipCode){
+
+        return employeeService.getAllByAddressZipCode(zipCode);   //coz zipcode is a field
     }
+
+    @GetMapping("/employeeType")
+    public List<Employee> getAllByEmployeeType(@RequestParam(name= "employeeType")EmployeeType employeeType){
+
+        return employeeService.getAllByEmployeeType(employeeType);    // In enum, employee types are values
+    }
+
+    @GetMapping("/employeeTypeList")
+    public List<Employee> getAllByEmployeeTypeList(@RequestParam(name= "employeeTypeList") List<EmployeeType> employeeTypeList){
+
+        return employeeService.getAllByEmployeeTypeList(employeeTypeList);
+    }
+
     @GetMapping("/salary")
     public List<Employee> getAllBySalaryGreaterThan(@RequestParam(name= "salary") float salary){
 

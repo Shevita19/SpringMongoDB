@@ -1,6 +1,7 @@
 package com.mongo.testMongo.service;
 
 import com.mongo.testMongo.model.Employee;
+import com.mongo.testMongo.model.EmployeeType;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.mongo.testMongo.repository.EmployeeRepository;
@@ -51,7 +52,10 @@ public class EmployeeService {
     }
 
     public List<Employee> getAllByExample(Employee emp) {
-        Example<Employee> e = Example.of(emp);
+
+       // ExampleMatcher matcher= ExampleMatcher.matchingAny().withIgnoreCase().withMatcher("lastName", ExampleMatcher.GenericPropertyMatcher.of(ExampleMatcher.StringMatcher.ENDING));  //Custom matcher
+        // Example<Employee> e = Example.of(emp, matcher);                  //we use matcher for defined field
+        Example<Employee> e = Example.of(emp);                              //Can search with any field
         return employeeRepository.findAll(e);
     }
 
@@ -65,5 +69,14 @@ public class EmployeeService {
 
     public List<Employee> getAllBySalaryGreaterThan(float salary) {
         return employeeRepository.findBySalaryGreaterThan(salary);
+    }
+
+    public List<Employee> getAllByEmployeeType(EmployeeType employeeType) {
+
+        return employeeRepository.findAllByEmployeeType(employeeType);
+    }
+
+    public List<Employee> getAllByEmployeeTypeList(List<EmployeeType> employeeTypeList) {
+        return employeeRepository.findAllByEmployeeTypeIn(employeeTypeList);                     // method name same as repository
     }
 }
